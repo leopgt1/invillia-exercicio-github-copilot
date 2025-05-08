@@ -25,7 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
-          <p><strong>Participants:</strong> ${details.participants.length > 0 ? details.participants.join(", ") : "No participants yet"}</p>
+          <label for="participants-${name}"><strong>Participants:</strong></label>
+          <select id="participants-${name}" class="participants-dropdown">
+            ${details.participants.length > 0 
+              ? details.participants.map(participant => `<option>${participant}</option>`).join("")
+              : `<option>No participants yet</option>`}
+          </select>
         `;
 
         activitiesList.appendChild(activityCard);
